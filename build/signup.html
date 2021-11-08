@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+
+     <style>
+         #signupform input{
+             padding:10px;
+             width: 300px;
+           
+             margin:15px;
+         }
+     </style>
+
+
+
+
+</head>
+<body>
+    
+       <div id="signupform" >
+        <h1>signup here</h1>
+       
+            <input type="text" id="name" placeholder="Enter your name"><br>
+            <input type="text"  id="email"     placeholder="Enter your email"><br>
+            <input type="password"    id="password" placeholder="Enter your password"><br>
+            <input type="text"  id="username" placeholder="Enter your username"><br>
+            <input type="number" id="mobile" placeholder="Enter your passwordmobile"><br>
+            <input type="text"  id="description" placeholder="Enter yourAdd Description"><br>
+             <button onclick="signup()"></button>
+       </div>
+
+
+
+       <script>
+
+          function signup(){
+           
+
+   var  name=document.getElementById("name").value,
+   var  email=document.getElementById('email').value,
+    var password=document.getElementById('password').value,
+   var  username=document.getElementById('username').value,
+   var  mobile=document.getElementById('mobile').value,
+   var  description=document.getElementById('description').value,
+
+   let   userdata={
+         name,
+         email,
+         password,
+         username,
+         mobile,
+         description
+     }
+
+
+  console.log(userdata)
+
+
+          }
+
+
+
+ 
+
+
+
+
+       </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
