@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+  <style>
+       #cartmenu{
+      width:95%;
+      background-color:aquamarine;
+      display:grid;
+      margin:auto;
+      grid-template-columns: repeat(3 ,30%);
+      gap:2%;
+  }
+
+  #cartmenu div{
+      margin: 2%;
+      background-color:coral;
+      padding:5%;
+      color:white;
+     
+  }
+    
+  #cartmenu div img{
+      width:100%;
+      height:80%;
+  }
+
+
+
+
+  </style>
+
+
+    
+</head>
+<body>
+    
+    <div id="cartmenu"></div>
+
+      <button onclick="placeorder()">Place order</button>
+
+
+
+
+
+
+
+    <script>
+
+  var menu_incart= JSON.parse(localStorage.getItem("menucart"))
+
+
+   console.log(menu_incart)
+
+
+
+   function appendmenu(arr){
+
+
+arr.forEach(element => {
+    
+    let div = document.createElement("div")
+
+    let image=document.createElement("img");
+    image.src = element.strMealThumb;
+
+    let p1 =document.createElement("p");
+    p1.textContent=element.strMeal;
+
+  
+
+    let p3=document.createElement("p");
+    p3.textContent= 699+ " "+"rupees";
+
+  
+
+
+div.append(image,p1,p3,);
+
+document.getElementById("cartmenu").append(div)
+
+
+});
+
+
+
+}
+    appendmenu(menu_incart);
+
+
+      function placeorder(){
+         
+        
+
+
+
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

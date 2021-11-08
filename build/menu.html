@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+<style>
+
+  #menubar{
+      width:95%;
+      background-color:aquamarine;
+      display:grid;
+      margin:auto;
+      grid-template-columns: repeat(3 ,30%);
+      gap:2%;
+  }
+
+  #menubar div{
+      margin: 2%;
+      background-color:coral;
+      padding:5%;
+      color:white;
+     
+  }
+    
+  #menubar div img{
+      width:100%;
+      height:80%;
+  }
+   button{
+       background-color:red;
+       color:white;
+      float:right;
+   }
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+    
+    <a href="cart.html">Go to Cart</a>
+    <div id="menubar"></div>
+
+
+
+
+
+
+
+
+      <script>
+
+async function showmenu(){
+
+let res = await  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
+
+let data= await res.json();
+
+
+  console.log(data)
+  appendmenu(data.meals)
+}
+
+  showmenu();
+
+
+
+     
+  function appendmenu(arr){
+
+
+    arr.forEach(element => {
+        
+        let div = document.createElement("div")
+
+        let image=document.createElement("img");
+        image.src = element.strMealThumb;
+
+        let p1 =document.createElement("p");
+        p1.textContent=element.strMeal;
+
+        let p2=document.createElement("p");
+        p2.textContent=element.strTags
+
+        let p3=document.createElement("p");
+        p3.textContent= 699+ " "+"rupees";
+
+        let btn = document.createElement("button")
+   btn.textContent = "Add To Cart";
+
+   btn.onclick=function(){
+       addmenu(element);
+   };
+
+
+    div.append(image,p1,p2,p3,btn);
+
+    document.getElementById("menubar").append(div)
+
+
+    });
+
+
+
+  }
+
+
+  var menucart=[]
+    function addmenu(element){ 
+      menucart.push(element)
+      
+ console.log(menucart)
+
+
+        console.log(element)
+        console.log("hello")
+
+        localStorage.setItem("menucart",JSON.stringify(menucart))
+
+
+    }
+
+
+    
+
+
+
+
+
+      </script>
+
+
+
+
+
+
+</body>
+</html>
