@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup</title>
-
+  
      <style>
          #signupform input{
              padding:10px;
@@ -21,45 +21,70 @@
 
 </head>
 <body>
+  
     
        <div id="signupform" >
         <h1>signup here</h1>
        
             <input type="text" id="name" placeholder="Enter your name"><br>
-            <input type="text"  id="email"     placeholder="Enter your email"><br>
-            <input type="password"    id="password" placeholder="Enter your password"><br>
+             <input type="text"  id="email"     placeholder="Enter your email"><br>
+           <input type="password"    id="password" placeholder="Enter your password"><br>
             <input type="text"  id="username" placeholder="Enter your username"><br>
-            <input type="number" id="mobile" placeholder="Enter your passwordmobile"><br>
-            <input type="text"  id="description" placeholder="Enter yourAdd Description"><br>
-             <button onclick="signup()"></button>
+            <input type="number" id="mobile" placeholder="Enter your mobile"><br>
+            <input type="text"  id="description" placeholder=" Add Description"><br> 
+             <button onclick="signup()">signup</button>
        </div>
 
 
 
        <script>
 
-          function signup(){
+         async function signup(){
            
 
-   var  name=document.getElementById("name").value,
-   var  email=document.getElementById('email').value,
-    var password=document.getElementById('password').value,
-   var  username=document.getElementById('username').value,
-   var  mobile=document.getElementById('mobile').value,
-   var  description=document.getElementById('description').value,
-
-   let   userdata={
-         name,
-         email,
-         password,
-         username,
-         mobile,
-         description
-     }
+            var name=document.getElementById("name").value;
+          
+            var email=document.getElementById("email").value;
+           var password=document.getElementById("password").value;
+var   username=document.getElementById("username").value;
+   var mobile=document.getElementById("mobile").value;
+    var description=document.getElementById("description").value;
 
 
-  console.log(userdata)
 
+
+
+
+            let user={
+                name,
+                email,
+                password,
+                username,
+                username,
+                mobile,
+                description,
+
+            }
+    // console.log(user)
+
+
+
+     let user_data=JSON.stringify(user);
+
+       let res = await fetch(`https://masai-api-mocker.herokuapp.com/auth/register`,{
+
+         method: "POST",
+         body:user_data,
+         headers: {
+             "Content-Type": "application/json"
+         }
+
+
+       })
+
+       let data= await res.json();
+
+       console.log(data)
 
           }
 
