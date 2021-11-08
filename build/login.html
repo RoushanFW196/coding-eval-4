@@ -40,24 +40,34 @@
 
 
        <script>
-            function login(){
+        async    function login(){
 
             var password=document.getElementById("password").value;
 var   username=document.getElementById("username").value;
      
-     
-let user={
-              
-                password,
+         let user={
+              password,
                 username,
-               
-
             }
 
-            console.log(user)
+            let datasent=JSON.stringify(user);
+
+     let res = await fetch(`https://masai-api-mocker.herokuapp.com/auth/login`,{
 
 
+        method: "POST",
+         body:datasent,
+         headers: {
+             "Content-Type": "application/json"
+         }
+     })
+        
 
+
+       let data= await res.json();
+
+       console.log(data);
+            
            }
 
 
